@@ -2,14 +2,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 function onSearch() {
   const q = document.getElementById('q').value.trim();
-  if (!q) {
-    alert('Type a product to search');
-    return;
-  }
+  if (!q) return alert('Type a product to search');
   alert('Searching for: ' + q);
 }
 
 window.onload = function () {
+
   document.getElementById("featuredBtn").onclick = () => {
     console.log("Featured clicked");
   };
@@ -21,4 +19,5 @@ window.onload = function () {
   document.getElementById("brandBtn").onclick = () => {
     console.log("Brand Partners clicked");
   };
+
 };
