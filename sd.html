@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SteelDeal — Home</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- LINKED CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="margin:0; background:linear-gradient(180deg,#fbfdff 0%, #ffffff 50%);">
+  <div class="mock" style="width:100%;max-width:1600px;" role="main">
+
+    <header>
+      <div class="brand">
+        <img src="logo.png" alt="SteelDeal logo" />
+        <h1>SteelDeal</h1>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#" class="active">Login</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Product Catalog</a>
+      </nav>
+    </header>
+
+    <div class="content">
+      <div class="hero">
+
+        <div class="eyebrow">Quality Steel & Construction Supplies</div>
+        <h2 class="title">BUILD THE FUTURE <span class="accent"></span></h2>
+        <p class="subtitle">Fast delivery | Top brands | Competitive pricing</p>
+
+        <div class="search-wrap">
+          <form class="search" onsubmit="event.preventDefault(); onSearch();">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden style="opacity:0.6">
+              <path d="M21 21l-4.35-4.35" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="11" cy="11" r="6" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
+            </svg>
+
+            <input id="q" placeholder="Search for products..." aria-label="Search" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="card" id="featuredBtn">
+            <div class="icon">🔩</div>
+            <div>
+              <h4>Featured Products</h4>
+              <p>Top picks for construction</p>
+            </div>
+          </div>
+
+          <div class="card" id="bestBtn">
+            <div class="icon">⭐</div>
+            <div>
+              <h4>Best Sellers</h4>
+              <p>Items bought together</p>
+            </div>
+          </div>
+
+          <div class="card" id="brandBtn">
+            <div class="icon">🏷️</div>
+            <div>
+              <h4>Brand Partners</h4>
+              <p>Trusted manufacturers</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured">
+          <div class="product">
+            <img src="steel.png" alt="Steel Beams" />
+            <h5>Steel Beams</h5>
+            <div class="price">₹48/kg</div>
+          </div>
+
+          <div class="product">
+            <img src="metalroofing.png" alt="Metal Roofing" />
+            <h5>Metal Roofing</h5>
+            <div class="price">₹300/sqm</div>
+          </div>
+
+          <div class="product">
+            <img src="workggloves.png" alt="Work Gloves" />
+            <h5>Work Gloves</h5>
+            <div class="price">₹150/pair</div>
+          </div>
+
+          <div class="product">
+            <img src="safetyhelms.png" alt="helmets" />
+            <h5>Safety Helms</h5>
+            <div class="price">₹350/piece</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-illustration">
+        <img src="constructionimg.png" alt="construction illustration" />
+      </div>
+
+    </div>
+
+    <footer>
+      © <span id="year"></span> SteelDeal · All rights reserved · Contact: steeldealtpp@gmail.com
+    </footer>
+  </div>
+
+  <!-- JS FILE -->
+  <script src="script.js"></script>
+</body>
+</html>
