@@ -24,6 +24,9 @@
       </div>
 
       <nav>
+        <a href="cart.html" class="cart-btn">
+            🛒 Cart <span id="cartCount">0</span>
+        </a>
         <a href="#" class="active">Login</a>
         <a href="#">Sign Up</a>
         <a href="#">Product Catalog</a>
@@ -58,49 +61,56 @@
           </div>
 
           <div class="card" id="bestBtn">
-            <div class="icon">⭐</div>
+            <div class="icon">⭐</div>  
             <div>
               <h4>Best Sellers</h4>
               <p>Items bought together</p>
             </div>
           </div>
 
-          <div class="card" id="brandBtn">
-            <div class="icon">🏷️</div>
-            <div>
-              <h4>Brand Partners</h4>
-              <p>Trusted manufacturers</p>
+            <a href="brandpartners.html" style="text-decoration:none; color:inherit;">
+            <div class="card" id="brandBtn">
+              <div class="icon">🏷️</div>
+              <div>
+                <h4>Brand Partners</h4>
+                <p>Trusted manufacturers</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
 
         <div class="featured">
 
-          <div class="product">
-            <img src="assets/steel.png" alt="Steel Beams" />
-            <h5>Steel Beams</h5>
-            <div class="price">₹48/kg</div>
-          </div>
+  <div class="product">
+    <img src="assets/steel.png" alt="Steel Beams" />
+    <h5>Steel Beams</h5>
+    <div class="price">₹48/kg</div>
+    <button class="addCartBtn" onclick="addToCart('Steel Beams', 48, 'assets/steel.png')">Add to Cart</button>
+  </div>
 
-          <div class="product">
-            <img src="assets/metalroofing.png" alt="Metal Roofing" />
-            <h5>Metal Roofing</h5>
-            <div class="price">₹300/sqm</div>
-          </div>
+  <div class="product">
+    <img src="assets/metalroofing.png" alt="Metal Roofing" />
+    <h5>Metal Roofing</h5>
+    <div class="price">₹300/sqm</div>
+    <button class="addCartBtn" onclick="addToCart('Metal Roofing', 300, 'assets/metalroofing.png')">Add to Cart</button>
+  </div>
 
-          <div class="product">
-            <img src="assets/workggloves.png" alt="Work Gloves" />
-            <h5>Work Gloves</h5>
-            <div class="price">₹150/pair</div>
-          </div>
+  <div class="product">
+    <img src="assets/workggloves.png" alt="Work Gloves" />
+    <h5>Work Gloves</h5>
+    <div class="price">₹150/pair</div>
+    <button class="addCartBtn" onclick="addToCart('Work Gloves', 150, 'assets/workggloves.png')">Add to Cart</button>
+  </div>
 
-          <div class="product">
-            <img src="assets/safetyhelms.png" alt="Safety Helms" />
-            <h5>Safety Helms</h5>
-            <div class="price">₹350/piece</div>
-          </div>
+  <div class="product">
+    <img src="assets/safetyhelms.png" alt="Safety Helms" />
+    <h5>Safety Helms</h5>
+    <div class="price">₹350/piece</div>
+    <button class="addCartBtn" onclick="addToCart('Safety Helms', 350, 'assets/safetyhelms.png')">Add to Cart</button>
+  </div>
 
-        </div>
+</div>
+
 
       </div>
 
@@ -110,9 +120,15 @@
 
     </div>
 
-    <footer>
-      © <span id="year"></span> SteelDeal · All rights reserved · Contact: steeldealtpp@gmail.com
-    </footer>
+<footer>
+  © <span id="year"></span> SteelDeal · All rights reserved · Contact: steeldealtpp@gmail.com
+  <div class="footer-links">
+    <a href="about.html">About Us</a>
+    <a href="faq.html">FAQs</a>
+    <a href="terms.html">Terms & Conditions</a>
+  </div>
+</footer>
+
   </div>
 
   <!-- Correct JS path -->
