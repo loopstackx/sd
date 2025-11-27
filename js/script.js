@@ -12,15 +12,12 @@ function onSearch() {
   alert("Searching for: " + q);
 }
 
-
 /* -------------------------
  ADD TO CART FUNCTIONALITY
 -------------------------- */
-
 function addToCart(name, price, img) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Check if item exists
   let existing = cart.find(item => item.name === name);
 
   if (existing) {
@@ -40,9 +37,8 @@ function addToCart(name, price, img) {
   alert(name + " added to cart!");
 }
 
-
 /* -------------------------
- UPDATE CART COUNT (TOP NAV)
+ UPDATE CART COUNT
 -------------------------- */
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -54,16 +50,13 @@ function updateCartCount() {
   if (cartCountEl) cartCountEl.textContent = totalQty;
 }
 
-
 /* -------------------------
     CART PAGE RENDER LOGIC
 -------------------------- */
-
 function renderCart() {
   const container = document.getElementById("cartContainer");
   const totalSpan = document.getElementById("cartTotal");
 
-  // If not on cart page, do nothing
   if (!container) return;
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -99,7 +92,6 @@ function renderCart() {
   totalSpan.textContent = total;
 }
 
-
 /* -------------------------
       CHANGE QUANTITY
 -------------------------- */
@@ -109,14 +101,13 @@ function changeQty(index, amount) {
   cart[index].qty += amount;
 
   if (cart[index].qty <= 0) {
-    cart.splice(index, 1); // remove item
+    cart.splice(index, 1);
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
   updateCartCount();
 }
-
 
 /* -------------------------
      CLEAR CART BUTTON
@@ -129,17 +120,6 @@ if (document.getElementById("clearBtn")) {
   };
 }
 
-
-/* -------------------------
-     CHECKOUT BUTTON
--------------------------- */
-if (document.getElementById("checkoutBtn")) {
-  document.getElementById("checkoutBtn").onclick = () => {
-    alert("Checkout feature coming soon!");
-  };
-}
-
-
 /* -------------------------
  EXECUTE ON PAGE LOAD
 -------------------------- */
@@ -147,3 +127,67 @@ window.onload = () => {
   updateCartCount();
   renderCart();
 };
+
+/* -------------------------
+      PAYMENT POPUP
+-------------------------- */
+function openPaymentPopup() {
+  document.getElementById("paymentPopup").style.display = "flex";
+}
+
+function closePaymentPopup() {
+  document.getElementById("paymentPopup").style.display = "none";
+}
+
+/* -------------------------
+        PAYMENT LOGIC
+-------------------------- */
+function startPayment(method) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  closePaymentPopup();
+
+  // SAVE ORDER HISTORY
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  const order = {
+    id: Date.now(),
+    items: cart,
+    paymentMethod: method,
+    time: new Date().toLocaleString(),
+    total: cart.reduce((sum, item) => sum + item.price * item.qty, 0)
+  };
+
+  orders.push(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  // PAYMENT ANIMATION
+  setTimeout(() => {
+    document.getElementById("successPopup").style.display = "flex";
+    localStorage.removeItem("cart");
+    updateCartCount();
+  }, 500);
+}
+
+function closeSuccessPopup() {
+  document.getElementById("successPopup").style.display = "none";
+  window.location.href = "orderhistory.html"; 
+}
+
+/* -------------------------
+     CHECKOUT BUTTON FIXED
+-------------------------- */
+const checkoutButton = document.getElementById("checkoutBtn");
+
+if (checkoutButton) {
+  checkoutButton.onclick = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    openPaymentPopup();
+  };
+}

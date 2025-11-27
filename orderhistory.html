@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SteelDeal — Order History</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .order-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+      border: 1px solid rgba(12,18,28,0.05);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .order-header {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .order-info {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .order-items {
+      margin-top: 10px;
+      padding-left: 16px;
+    }
+
+    .order-items li {
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+</head>
+<body style="margin:0; background:linear-gradient(180deg,#fbfdff 0%, #ffffff 50%);">
+
+<div class="mock" style="width:100%; max-width:1200px; margin:32px auto;" role="main">
+
+  <header>
+    <div class="brand">
+      <img src="assets/logo.png" alt="SteelDeal logo" />
+      <h1>SteelDeal</h1>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="orderhistory.html" class="active">Order History</a>
+    </nav>
+  </header>
+
+  <div class="content" style="display:block; padding:32px;">
+
+    <h2 class="title">Your Orders</h2>
+    <p class="subtitle">View all your past purchases and transactions</p>
+
+    <div id="orderList" style="margin-top:24px;"></div>
+
+  </div>
+
+  <footer>
+    © <span id="year"></span> SteelDeal · All rights reserved · Contact: steeldealtpp@gmail.com
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="faq.html">FAQs</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function loadOrders() {
+    const list = document.getElementById("orderList");
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+      list.innerHTML = `<p style="font-size:18px; color:#777;">No orders placed yet.</p>`;
+      return;
+    }
+
+    orders.reverse().forEach(order => {
+      let itemsHTML = order.items
+        .map(i => `<li>${i.name} (x${i.qty}) — ₹${i.price * i.qty}</li>`)
+        .join("");
+
+      list.innerHTML += `
+        <div class="order-box">
+          <div class="order-header">Order #${order.id}</div>
+          <div class="order-info">Placed on: ${order.time}</div>
+          <div class="order-info">Payment Method: <b>${order.paymentMethod}</b></div>
+          <div class="order-info">Total Amount: <b>₹${order.total}</b></div>
+          <ul class="order-items">${itemsHTML}</ul>
+        </div>
+      `;
+    });
+  }
+
+  loadOrders();
+</script>
+
+</body>
+</html>

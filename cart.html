@@ -47,6 +47,93 @@
 </footer>
 
 </div>
+<!-- ===================== CHECKOUT POPUP ===================== -->
+<div id="paymentPopup" class="popup-overlay">
+  <div class="popup-box">
+
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-options">
+
+      <div class="pay-card" onclick="startPayment('Cash on Delivery')">
+        <img src="assets/cod.png" alt="">
+        <p>Cash on Delivery</p>
+      </div>
+
+      <div class="pay-card" onclick="startPayment('UPI')">
+        <img src="assets/upi.png" alt="">
+        <p>UPI</p>
+      </div>
+
+      <div class="pay-card" onclick="startPayment('Debit Card')">
+        <img src="assets/debit.png" alt="">
+        <p>Debit Card</p>
+      </div>
+
+      <div class="pay-card" onclick="startPayment('Credit Card')">
+        <img src="assets/credit.png" alt="">
+        <p>Credit Card</p>
+      </div>
+
+    </div>
+
+    <button class="closeBtn" onclick="closePaymentPopup()">Cancel</button>
+
+  </div>
+</div>
+
+
+<!-- ===================== SUCCESS POPUP ===================== -->
+<div id="successPopup" class="popup-overlay">
+  <div class="success-box">
+    <div class="tick-animation">&#10004;</div>
+    <h2>Payment Successful!</h2>
+    <p>Your order has been placed.</p>
+    <button class="closeBtn" onclick="closeSuccessPopup()">OK</button>
+  </div>
+</div>
+  <!-- Payment Selection Popup -->
+<div id="paymentPopup" class="popup-overlay">
+  <div class="popup-box">
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-options">
+
+      <div class="payment-option" onclick="startPayment('Cash on Delivery')">
+        <img src="assets/payments/cod.png" alt="COD">
+        <span>Cash on Delivery</span>
+      </div>
+
+      <div class="payment-option" onclick="startPayment('UPI')">
+        <img src="assets/payments/upi.png" alt="UPI">
+        <span>UPI</span>
+      </div>
+
+      <div class="payment-option" onclick="startPayment('Debit Card')">
+        <img src="assets/payments/debit.png" alt="Debit Card">
+        <span>Debit Card</span>
+      </div>
+
+      <div class="payment-option" onclick="startPayment('Credit Card')">
+        <img src="assets/payments/card.png" alt="Credit Card">
+        <span>Credit Card</span>
+      </div>
+
+    </div>
+
+    <button class="close-btn" onclick="closePaymentPopup()">Cancel</button>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="popup-overlay">
+  <div class="popup-box success">
+    <img src="assets/payments/success.gif" class="success-icon">
+    <h2>Payment Successful</h2>
+    <p>Your order has been placed successfully!</p>
+    <button class="addCartBtn" onclick="closeSuccessPopup()">OK</button>
+  </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>
